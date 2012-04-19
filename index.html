@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset='utf-8'>
-
+  <script type="text/javascript" src="swfobject.js"></script>
   <title>alamboley/CitruxEngine @ GitHub</title>
 
   <style type="text/css">
@@ -46,15 +46,17 @@
       <span class="small">by <a href="https://github.com/alamboley">alamboley</a></span></h1>
 
     <div class="description">
-      2D Game Engine for haXe NME
+      2D Game Engine for Haxe NME
     </div>
 
       <h2>Authors</h2>
-      <p>Aymeric (aymeric.lamboley@gmail.com)<br/>      </p>    
+      <p>Aymeric (aymeric.lamboley@gmail.com)
+<br/>      </p>    
 
     
       <h2>Contact</h2>
-      <p>Aymeric Lamboley (aymeric.lamboley@gmail.com)<br/>      </p>
+      <p>Aymeric Lamboley (aymeric.lamboley@gmail.com)
+<br/>      </p>
     
 
     <h2>Download</h2>
@@ -72,10 +74,10 @@
       get the source code on GitHub : <a href="https://github.com/alamboley/CitruxEngine">alamboley/CitruxEngine</a>
     </div>
 
-	<div id="haxe:trace" style="position: absolute; z-index: 2147483647; display: none;"></div>
-    <div id="haxe:jeash" style="background-color: #ffffff; width: 800px; height: 600px" data-framerate="30"></div>
-	<script async type="text/javascript" src="https://raw.github.com/alamboley/CitruxEngine/master/Export/html5/bin/CitruxEngineExample.js"></script>
-
+  <script type="text/javascript">
+  swfobject.embedSWF("CitruxEngineExample.swf", "flashContent", "640", "480", "10.0.0");
+  </script>
+  <div id="flashContent"></div>
   </div>
 
 </body>
