@@ -18,23 +18,23 @@ import nme.Lib;
  * <p>CitruxEngine is a singleton so that you can grab a reference to it anywhere, anytime. Don't abuse this power,
  * but use it wisely. With it, you can quickly grab a reference to the manager classes such as current State, Input and SoundManager.</p>
  */	
-class CitruxEngine extends Sprite {
+class CitruxEngine<T> extends Sprite {
 
-	static private var _instance:CitruxEngine;
+	static private var _instance:CitruxEngine<Dynamic>;
 
-	public var state(getState, setState):State;
+	public var state(getState, setState):State<T>;
 	public var playing(getPlaying, setPlaying):Bool;
-	public var gameData(getGameData, setGameData):AGameData;
+	public var gameData(getGameData, setGameData):T;
 	public var input(getInput, never):Input;
 	public var sound(getSound, never):SoundManager;
 
-	var _state:State;
-	var _newState:State;
+	var _state:State<T>;
+	var _newState:State<T>;
 	var _stateDisplayIndex:Int;
 
 	var _playing:Bool;
 
-	var _gameData:AGameData;
+	var _gameData:T;
 	var _input:Input;
 	var _sound:SoundManager;
 
@@ -67,7 +67,7 @@ class CitruxEngine extends Sprite {
 		this.addEventListener(Event.ADDED_TO_STAGE, _handleAddedToStage);
 	}
 
-	static public function getInstance():CitruxEngine {
+	static public function getInstance():CitruxEngine<Dynamic> {
 
 		return _instance;
 	}
@@ -108,7 +108,7 @@ class CitruxEngine extends Sprite {
 	 * hasn't occured yet, then this will reference your new state; this is because actual state-changes only happen pre-tick.
 	 * That way you don't end up changing states in the middle of a state's tick, effectively fucking stuff up. 
 	 */	
-	public function getState():State {
+	public function getState():State<T> {
 		return (_newState != null) ? _newState : _state;
 	}
 	
@@ -116,7 +116,7 @@ class CitruxEngine extends Sprite {
 	 * We only ACTUALLY change states on enter frame so that we don't risk changing states in the middle of a state update.
 	 * However, if you use the state getter, it will grab the new one for you, so everything should work out just fine.
 	 */	
-	public function setState(value:State):State {
+	public function setState(value:State<T>):State<T> {
 		return _newState = value;
 	}
 
@@ -142,14 +142,14 @@ class CitruxEngine extends Sprite {
 	 * A reference to the Abstract GameData instance. Use it if you want.
 	 * It's a dynamic class, so you don't have problem to access informations in its extended class.
 	 */
-	public function getGameData():AGameData {
+	public function getGameData():T {
 		return _gameData;
 	}
 
 	/**
 	 * You may use a class to store your game's data, there is already an abstract class for that :
 	 */
-	public function setGameData(value:AGameData):AGameData {
+	public function setGameData(value:T):T {
 		return _gameData = value;
 	}
 

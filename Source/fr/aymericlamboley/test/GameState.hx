@@ -22,7 +22,7 @@ import format.SWF;
 import nme.Assets;
 import nme.geom.Rectangle;
 
-class GameState extends State {
+class GameState extends State<GameData> {
 
 	public function new() {
 
@@ -34,6 +34,7 @@ class GameState extends State {
 		super.initialize();
 		
 		_ce.gameData.dataChanged.add(_gameDataChanged);
+		_ce.gameData.customProp = 1;
 
 		var box2d:Box2D = new Box2D("Box2D");
 		box2d.visible = true;
