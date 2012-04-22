@@ -8,7 +8,7 @@ import hxs.Signal2;
  * You can dispatch a signal, dataChanged, if you update one of your data.
  * For more information, watch the example below. 
  */
-class AGameData implements Dynamic<Dynamic> {
+class AGameData {
 
 	public var dataChanged:Signal2<String, Dynamic>;
 
